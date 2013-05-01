@@ -25,3 +25,4 @@ done
 clear;
 adduser --force-badname $username;
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'"
+rm -R "$(cd "$(dirname "$0")"; pwd)/../new_developer";

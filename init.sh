@@ -28,4 +28,11 @@ htpasswd -b /home/.htpasswd $username $password
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'"
 chmod 0750 /home/$username
 chown -R $username /home/$username
+
+git config --global color.ui auto
+git config --global core.editor "vim"
+git config --global merge.tool vimdiff
+export VISUAL=vim
+export EDITOR=vim
+
 rm -R "$(cd "$(dirname "$0")"; pwd)/../new_developer";

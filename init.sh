@@ -29,10 +29,10 @@ mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$us
 
 chmod 751 /home/$username
 
-git config --global color.ui auto
-git config --global core.editor "vim"
-git config --global merge.tool vimdiff
-export VISUAL=vim
-export EDITOR=vim
+su -c "git config --global color.ui auto" - $username
+su -c "git config --global core.editor 'vim'" - $username
+su -c "git config --global merge.tool vimdiff" - $username
+su -c "export VISUAL=vim" - $username
+su -c "export EDITOR=vim" - $username
 
 rm -R "$(cd "$(dirname "$0")"; pwd)/../new_developer";

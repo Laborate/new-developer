@@ -12,12 +12,10 @@ exit;
 
 3. **Login In As New User**
 ```bash
-ssh <username>@dev.laborate.io
+ssh <username>@dev.laborate.io;
 ```
 
 3. **Create SSH Keys And Add To Github**
 ```bash
-cd ~/.ssh
-ssh-keygen -t rsa -C "<username>@laborate.io"
-cat ~/.ssh/id_rsa.pub
+cd ~/.ssh; ssh-keygen -t rsa -C "<username>@laborate.io"; clear; cat ~/.ssh/id_rsa.pub;
 ```

@@ -33,6 +33,8 @@ mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$us
 
 chmod 751 /home/$username;
 
+su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; clear; cat ~/.ssh/id_rsa.pub;" - $username;
+
 su -c "git config --global user.name '$name'" - $username;
 su -c "git config --global user.email '$email'" - $username;
 

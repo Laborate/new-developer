@@ -28,7 +28,7 @@ git config --global user.email "<email_used_on_github>"
 
 5. **OPTIONAL: Change Default Editor & Diff Tool**
 ```bash
-#Currently it is set to VIM
+# Currently it is set to VIM
 git config --global core.editor "<editor>"
 git config --global merge.tool "<editor_diff>"
 export VISUAL="<editor>"

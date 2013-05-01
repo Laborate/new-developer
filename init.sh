@@ -27,9 +27,7 @@ adduser --force-badname $username;
 htpasswd -b /home/.htpasswd $username $password
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'"
 
-sudo chown -R www-data:www-data /home/$username/
-adduser $username www-data
-chmod -R 775 /home/$username
+chmod 751 /home/$username
 
 git config --global color.ui auto
 git config --global core.editor "vim"

@@ -18,6 +18,6 @@ ssh <username>@dev.laborate.io
 3. **Create SSH Keys And Add To Github**
 ```bash
 cd ~/.ssh
-ssh-keygen -t rsa -C "<username>@dev.laborate.io"
+ssh-keygen -t rsa -C "<username>@laborate.io"
 cat ~/.ssh/id_rsa.pub
 ```

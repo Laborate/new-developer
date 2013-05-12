@@ -31,7 +31,7 @@ adduser --force-badname $username;
 htpasswd -b /home/.htpasswd $username $password;
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
 
-chmod 751 -R /home/$username;
+chmod 771 -R /home/$username;
 chown -R root /home/$username;
 chgrp -R $username /home/$username;
 

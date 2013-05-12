@@ -31,7 +31,9 @@ adduser --force-badname $username;
 htpasswd -b /home/.htpasswd $username $password;
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
 
-chmod 751 /home/$username;
+chmod 751 -R /home/$username;
+chown -R root /home/$username;
+chgrp -R $username /home/$username;
 
 su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; clear; cat ~/.ssh/id_rsa.pub;" - $username;
 

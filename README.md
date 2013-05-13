@@ -1,3 +1,5 @@
+# For Root User Only
+
 Install After [base-init](https://github.com/Laborate/base-init)
 -----------------------------------------------------------------
 1. **Run Installer Script**

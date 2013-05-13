@@ -1,4 +1,4 @@
-# For Root User Only
+# Admin Only
 
 Install After [base-init](https://github.com/Laborate/base-init)
 -----------------------------------------------------------------

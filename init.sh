@@ -1,7 +1,7 @@
 while [[ -z "$mysql_username" || -z "$mysql_password" ]]; do
     clear;
-    read -p "MYSQL Username: " mysql_username;
-    read -p "MYSQL Password: " mysql_password;
+    read -p "MYSQL Admin Username: " mysql_username;
+    read -p "MYSQL Admin Password: " mysql_password;
     read -p "Is this information correct [Y/n]: " mysql_correct;
 
     if [ "$mysql_correct" == "n" ]; then
@@ -28,9 +28,9 @@ done
 
 clear;
 adduser --force-badname $username;
-htpasswd -b /home/.htpasswd $username $password;
+mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE DATABASE laborate_$username;"
 mysql --user="$mysql_username" --password="$mysql_password" -e "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
-
+mysql --user="$mysql_username" --password="$mysql_password" -e "GRANT ALL PRIVILEGES ON laborate_$username.* To '$username';"
 chmod 770 -R /home/$username;
 chown -R root /home/$username;
 chgrp -R $username /home/$username;

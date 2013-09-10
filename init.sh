@@ -10,12 +10,13 @@ while [[ -z "$mysql_username" || -z "$mysql_password" ]]; do
     fi
 done
 
-while [[ -z "$username" || -z "$password" || -z "$name" || -z "$email" ]]; do
+while [[ -z "$username" || -z "$password" || -z "$name" || -z "$email" || -z "$ssh_key=" ]]; do
     clear;
     read -p "New Full Name: " name;
     read -p "Github Profile Email: " email;
     read -p "New Username: " username;
     read -p "New Password: " password;
+    read -p "Local SSH Key: " ssh_key;
     read -p "Is this information correct [Y/n]: " user_correct;
 
     if [ "$user_correct" == "n" ]; then
@@ -23,6 +24,7 @@ while [[ -z "$username" || -z "$password" || -z "$name" || -z "$email" ]]; do
         password=;
         name=;
         email=;
+        ssh_key=;
     fi
 done
 
@@ -35,7 +37,9 @@ chmod 775 -R /home/$username;
 chown -R root /home/$username;
 chgrp -R $username /home/$username;
 
-su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; clear; cat ~/.ssh/id_rsa.pub;" - $username;
+su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; touch ~/.ssh/authorized_keys;" - $username;
+su -c "echo '$ssh_key' >> ~/.ssh/authorized_keys;" - $username;
+su -c "clear; cat ~/.ssh/id_rsa.pub" - $username;
 
 su -c "git config --global user.name '$name'" - $username;
 su -c "git config --global user.email '$email'" - $username;

@@ -52,6 +52,7 @@ su -c "nvm install v0.10.7" - $username;
 su -c "nvm use v0.10.7" - $username;
 su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; touch ~/.ssh/authorized_keys;" - $username;
 su -c "echo '$ssh_key' >> ~/.ssh/authorized_keys;" - $username;
-su -c "clear; cat ~/.ssh/id_rsa.pub" - $username;
 
 rm -R "$(cd "$(dirname "$0")"; pwd)/../new_developer";
+
+su -c "clear; cat ~/.ssh/id_rsa.pub" - $username;

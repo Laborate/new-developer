@@ -36,7 +36,7 @@ mysql --user="$mysql_username" --password="$mysql_password" -e "GRANT ALL PRIVIL
 chmod 775 -R /home/$username;
 chown -R root /home/$username;
 chgrp -R $username /home/$username;
-usermod -a -G sudo hduser $username;
+usermod -a -G sudo $username;
 
 su -c "git config --global user.name '$name'" - $username;
 su -c "git config --global user.email '$email'" - $username;

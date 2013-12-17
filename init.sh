@@ -36,10 +36,7 @@ mysql --user="$mysql_username" --password="$mysql_password" -e "GRANT ALL PRIVIL
 chmod 775 -R /home/$username;
 chown -R root /home/$username;
 chgrp -R $username /home/$username;
-
-su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; touch ~/.ssh/authorized_keys;" - $username;
-su -c "echo '$ssh_key' >> ~/.ssh/authorized_keys;" - $username;
-su -c "clear; cat ~/.ssh/id_rsa.pub" - $username;
+usermod -a -G sudo hduser $username;
 
 su -c "git config --global user.name '$name'" - $username;
 su -c "git config --global user.email '$email'" - $username;
@@ -49,5 +46,12 @@ su -c "git config --global core.editor 'vim'" - $username;
 su -c "git config --global merge.tool vimdiff" - $username;
 su -c "export VISUAL=vim" - $username;
 su -c "export EDITOR=vim" - $username;
+
+su -c "curl https://raw.github.com/creationix/nvm/master/install.sh | sh" - $username;
+su -c "nvm install v0.10.7" - $username;
+su -c "nvm use v0.10.7" - $username;
+su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; touch ~/.ssh/authorized_keys;" - $username;
+su -c "echo '$ssh_key' >> ~/.ssh/authorized_keys;" - $username;
+su -c "clear; cat ~/.ssh/id_rsa.pub" - $username;
 
 rm -R "$(cd "$(dirname "$0")"; pwd)/../new_developer";

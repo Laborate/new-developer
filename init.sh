@@ -47,6 +47,9 @@ su -c "git config --global merge.tool vimdiff" - $username;
 su -c "export VISUAL=vim" - $username;
 su -c "export EDITOR=vim" - $username;
 
+su -c "curl https://raw.github.com/creationix/nvm/master/install.sh | sh" - $username;
+su -c "nvm install v0.10.7" - $username;
+su -c "nvm use v0.10.7" - $username;
 su -c "cd ~/.ssh; ssh-keygen -t rsa -C '$email'; touch ~/.ssh/authorized_keys;" - $username;
 su -c "echo '$ssh_key' >> ~/.ssh/authorized_keys;" - $username;
 

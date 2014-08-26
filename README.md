@@ -1,5 +1,3 @@
-# Admin Only
-
 Install After [base-init](https://github.com/Laborate/base-init)
 -----------------------------------------------------------------
 1. **Create SSH Keys Locally** [example](https://help.github.com/articles/generating-ssh-keys)

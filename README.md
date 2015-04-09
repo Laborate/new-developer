@@ -8,7 +8,7 @@ ssh-keygen -t rsa -C "<email address>";
 
 2. **Run Installer Script**
 ```bash
-cd ~; git clone git@github.com:Laborate/new_developer.git; sudo bash new_developer/init.sh;
+cd ~; git clone git@github.com:Laborate/new-developer.git; sudo bash new_developer/init.sh;
 ```
 
 3. **OPTIONAL: Change Default Editor & Diff Tool**
